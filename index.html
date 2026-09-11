@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adhiparasakthi Engineering College — E-Certificate Generator</title>
+  <meta name="description" content="Official Certificate Generator for WebGit, Department of Information Technology, Adhiparasakthi Engineering College, Melmaruvathur.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- jsPDF for direct client-side PDF generation -->
+  <script src="assets/js/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <!-- Top App Navigation -->
+  <header class="app-header">
+    <div class="header-brand">
+      <div class="brand-logo-wrap">
+        <img src="assets/college_logo.png" alt="APEC Logo" class="brand-college-logo">
+      </div>
+      <div class="brand-text">
+        <h1>ADHIPARASAKTHI ENGINEERING COLLEGE</h1>
+        <p class="brand-sub">Department of Information Technology &bull; WebGit E-Certificate Generator</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span class="status-chip">
+        <span class="pulse-dot"></span> Live Synced
+      </span>
+      <button id="btnQuickSample" class="btn-secondary" title="Load sample participant data">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+        Sample Data
+      </button>
+    </div>
+  </header>
+
+  <!-- Main 2-Panel Application Layout -->
+  <main class="app-main">
+    
+    <!-- LEFT PANEL: Generator Controls -->
+    <aside class="panel-controls">
+      <div class="panel-card">
+        <div class="card-header">
+          <div class="card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <h2>Certificate Details</h2>
+          </div>
+          <span class="badge-gold">WebGit 2026</span>
+        </div>
+
+        <form id="certForm" class="cert-form" onsubmit="event.preventDefault();">
+          
+          <!-- Certificate Category / Type Selector -->
+          <div class="form-group">
+            <label>Certificate Category <span class="req">*</span></label>
+            <div class="cert-type-toggle" id="certTypeToggle">
+              <button type="button" class="btn-type-toggle active" data-type="winning" id="btnTypeWinning">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H7.5"></path><path d="M14 14.66V17c0 .55.45 1 1 1h1.5"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+                Winner Certificate
+              </button>
+              <button type="button" class="btn-type-toggle" data-type="participation" id="btnTypeParticipation">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+                Participant Certificate
+              </button>
+            </div>
+          </div>
+
+          <!-- Participant Title & Name -->
+          <div class="form-row">
+            <div class="form-group col-title">
+              <label for="titleSelect">Title <span class="req">*</span></label>
+              <div class="select-wrapper">
+                <select id="titleSelect" name="title">
+                  <option value="MR/MRS">MR/MRS</option>
+                  <option value="MR">MR</option>
+                  <option value="MRS">MRS</option>
+                  <option value="MS">MS</option>
+                  <option value="NONE">None (Custom)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group col-name">
+              <label for="nameInput">Participant Name <span class="req">*</span></label>
+              <div class="input-wrapper">
+                <input type="text" id="nameInput" placeholder="e.g. LAKSHMANAN G" value="LAKSHMANAN G" autocomplete="off" required>
+                <button type="button" id="btnClearName" class="btn-clear" title="Clear name">&times;</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Year of Study Mention -->
+          <div class="form-group">
+            <label for="yearInput">
+              Year of Study <span class="req">*</span>
+              <span class="help-text">Added to participant mention</span>
+            </label>
+            <div class="input-wrapper">
+              <input type="text" id="yearInput" placeholder="e.g. III YEAR or II YEAR" value="III YEAR" autocomplete="off">
+            </div>
+            
+            <!-- Quick Year Chips -->
+            <div class="quick-chips year-chips">
+              <span class="chips-label">Quick Pick:</span>
+              <button type="button" class="chip-year" data-year="I YEAR">I Year</button>
+              <button type="button" class="chip-year" data-year="II YEAR">II Year</button>
+              <button type="button" class="chip-year active" data-year="III YEAR">III Year</button>
+              <button type="button" class="chip-year" data-year="IV YEAR">IV Year</button>
+              <button type="button" class="chip-year" data-year="">None</button>
+            </div>
+          </div>
+
+          <!-- Prize / Rank (Dynamic for Winner Mode) -->
+          <div class="form-group" id="prizeGroup">
+            <label for="prizeInput">
+              Prize / Rank
+              <span class="help-text">Displays as "has won [PRIZE]"</span>
+            </label>
+            <div class="input-wrapper">
+              <input type="text" id="prizeInput" placeholder="e.g. First Prize, 1st Prize, or 1" value="First Prize" autocomplete="off">
+            </div>
+            
+            <!-- Quick Prize Chips -->
+            <div class="quick-chips prize-chips">
+              <span class="chips-label">Quick Pick:</span>
+              <button type="button" class="chip active" data-val="First Prize">1st (First Prize)</button>
+              <button type="button" class="chip" data-val="Second Prize">2nd (Second Prize)</button>
+              <button type="button" class="chip" data-val="Third Prize">3rd (Third Prize)</button>
+              <button type="button" class="chip" data-val="1st Prize">1st Prize</button>
+              <button type="button" class="chip" data-val="2nd Prize">2nd Prize</button>
+              <button type="button" class="chip" data-val="Special Recognition">Special</button>
+            </div>
+          </div>
+
+          <!-- Event Name & Date Section with Date Change Options -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="eventInput">Event Name</label>
+              <input type="text" id="eventInput" value="WebGit" placeholder="Event Name">
+            </div>
+            
+            <div class="form-group">
+              <label for="dateInput">
+                Certificate Date <span class="req">*</span>
+                <span class="help-text">Change Date</span>
+              </label>
+              <div class="date-input-group">
+                <input type="text" id="dateInput" value="12/09/2026" placeholder="DD/MM/YYYY" autocomplete="off" required>
+                <input type="date" id="datePicker" class="date-picker-native" title="Choose from calendar">
+                <button type="button" id="btnOpenCalendar" class="btn-calendar" title="Choose date from calendar">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </button>
+              </div>
+              
+              <!-- Quick Date Chips -->
+              <div class="quick-chips date-chips">
+                <button type="button" class="chip-date active" data-date="12/09/2026">12/09/2026 (Event)</button>
+                <button type="button" class="chip-date" id="btnTodayDate">Today</button>
+                <button type="button" class="chip-date" data-date="13/09/2026">13/09/2026</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text Arrangement Mode Selector -->
+          <div class="form-group">
+            <div class="label-with-action">
+              <label for="arrangeMode">Text Arrangement</label>
+              <button type="button" id="btnAutoArrangeNow" class="btn-text-action" title="Automatically optimize text layout">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                Auto-Arrange
+              </button>
+            </div>
+            <div class="arrange-buttons" id="arrangeButtons">
+              <button type="button" class="btn-arrange" data-mode="left" title="Reference layout: Natural left-aligned flow">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="15" y2="12"></line><line x1="3" y1="18" x2="18" y2="18"></line></svg>
+                Left Flow
+              </button>
+              <button type="button" class="btn-arrange active" data-mode="center" title="Formal academic centered layout">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="6" y1="12" x2="18" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+                Centered
+              </button>
+              <button type="button" class="btn-arrange" data-mode="justified" title="Balanced full-width alignment">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                Justified
+              </button>
+            </div>
+          </div>
+
+          <!-- Department & Location -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="deptInput">Department</label>
+              <input type="text" id="deptInput" value="Department of Information Technology" placeholder="Department">
+            </div>
+            <div class="form-group">
+              <label for="locInput">Location</label>
+              <input type="text" id="locInput" value="Melmaruvathur" placeholder="Location">
+            </div>
+          </div>
+
+          <!-- Advanced Collapsible Options -->
+          <details class="advanced-settings">
+            <summary>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                Advanced Settings
+              </span>
+              <span class="chevron">&#9662;</span>
+            </summary>
+            <div class="advanced-body">
+              <div class="form-group">
+                <label for="collegeLineInput">College / Degree Line</label>
+                <input type="text" id="collegeLineInput" value="B.TECH-IT, ADHIPARASAKTHI ENGINEERING COLLEGE">
+              </div>
+              <div class="form-group">
+                <label for="exportScale">Download Resolution</label>
+                <select id="exportScale">
+                  <option value="3">Ultra HD (300 DPI - 3072x2046 px) [Recommended for Print]</option>
+                  <option value="2">High Resolution (2048x1364 px)</option>
+                  <option value="1">Standard (1024x682 px)</option>
+                </select>
+              </div>
+              <div class="checkbox-row">
+                <input type="checkbox" id="chkShowUnderline" checked>
+                <label for="chkShowUnderline">Draw underline when name is blank (matches template)</label>
+              </div>
+            </div>
+          </details>
+
+          <!-- Primary Actions -->
+          <div class="action-buttons">
+            <button type="button" id="btnGenerate" class="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              Generate Certificate
+            </button>
+
+            <div class="btn-group-downloads">
+              <button type="button" id="btnDownloadPng" class="btn-action btn-png">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download PNG
+              </button>
+
+              <button type="button" id="btnDownloadPdf" class="btn-action btn-pdf">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M10 12a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1z"></path></svg>
+                Download PDF
+              </button>
+            </div>
+
+            <div class="btn-group-aux">
+              <button type="button" id="btnPrint" class="btn-aux">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                Print Certificate
+              </button>
+
+              <button type="button" id="btnReset" class="btn-aux btn-danger">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+                Reset
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Quick Preset Participants Card -->
+      <div class="panel-card presets-card">
+        <h3>Sample Participants</h3>
+        <div class="preset-list">
+          <button class="preset-item" data-type="winning" data-title="MR" data-name="LAKSHMANAN G" data-year="III YEAR" data-prize="First Prize">
+            <span class="preset-badge rank-1">1</span>
+            <div class="preset-info">
+              <strong>MR LAKSHMANAN G</strong>
+              <small>III YEAR &bull; 1st Prize (Winner)</small>
+            </div>
+          </button>
+
+          <button class="preset-item" data-type="winning" data-title="MRS" data-name="PRIYA S" data-year="II YEAR" data-prize="Second Prize">
+            <span class="preset-badge rank-2">2</span>
+            <div class="preset-info">
+              <strong>MRS PRIYA S</strong>
+              <small>II YEAR &bull; 2nd Prize (Winner)</small>
+            </div>
+          </button>
+
+          <button class="preset-item" data-type="participation" data-title="MR" data-name="ARUN KUMAR" data-year="IV YEAR" data-prize="">
+            <span class="preset-badge rank-part">P</span>
+            <div class="preset-info">
+              <strong>MR ARUN KUMAR</strong>
+              <small>IV YEAR &bull; Participant</small>
+            </div>
+          </button>
+
+          <button class="preset-item" data-type="participation" data-title="MS" data-name="SNEHA R" data-year="I YEAR" data-prize="">
+            <span class="preset-badge rank-part">P</span>
+            <div class="preset-info">
+              <strong>MS SNEHA R</strong>
+              <small>I YEAR &bull; Participant</small>
+            </div>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT PANEL: Live Certificate Preview -->
+    <section class="panel-preview">
+      
+      <!-- Preview Controls Header -->
+      <div class="preview-toolbar">
+        <div class="toolbar-title">
+          <span class="dot-indicator"></span>
+          <span>Live Certificate Canvas</span>
+        </div>
+        <div class="toolbar-actions">
+          <div class="zoom-controls">
+            <button id="btnZoomOut" class="btn-tool" title="Zoom out">&minus;</button>
+            <span id="zoomLevelText" class="zoom-text">100%</span>
+            <button id="btnZoomIn" class="btn-tool" title="Zoom in">&plus;</button>
+            <button id="btnZoomFit" class="btn-tool" title="Fit to screen">Fit</button>
+          </div>
+          <button id="btnFullscreen" class="btn-tool" title="Toggle Fullscreen">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Certificate Preview Container -->
+      <div id="previewViewport" class="preview-viewport">
+        <div id="certificateWrapper" class="certificate-wrapper">
+          <!-- The rendering canvas (1024x682 baseline) -->
+          <canvas id="certCanvas" width="1024" height="682"></canvas>
+        </div>
+      </div>
+
+      <!-- Preview Footer Info -->
+      <div class="preview-footer">
+        <div class="footer-spec">
+          <span class="spec-tag">A4 Landscape</span>
+          <span class="spec-tag">Exact Reference Match</span>
+          <span class="spec-tag">300 DPI Export Ready</span>
+        </div>
+        <p class="preview-hint">
+          Preview updates automatically as you type. Text automatically fits without overlapping.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Hidden Offscreen Canvas for High-Resolution 300 DPI Export -->
+  <canvas id="exportCanvas" width="3072" height="2046" style="display:none;"></canvas>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script src="assets/certificate_base_data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
