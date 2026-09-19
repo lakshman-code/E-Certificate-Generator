@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adhiparasakthi Engineering College — E-Certificate Generator</title>
-  <meta name="description" content="Official Certificate Generator for WebGit, Department of Information Technology, Adhiparasakthi Engineering College, Melmaruvathur.">
+  <meta name="description"
+    content="Official Certificate Generator for WebGit, Department of Information Technology, Adhiparasakthi Engineering College, Melmaruvathur.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=6">
   <!-- jsPDF for direct client-side PDF generation -->
   <script src="assets/js/jspdf.umd.min.js"></script>
 </head>
+
 <body>
   <!-- Top App Navigation -->
   <header class="app-header">
@@ -29,7 +34,10 @@
         <span class="pulse-dot"></span> Live Synced
       </span>
       <button id="btnQuickSample" class="btn-secondary" title="Load sample participant data">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+          <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+        </svg>
         Sample Data
       </button>
     </div>
@@ -37,30 +45,47 @@
 
   <!-- Main 2-Panel Application Layout -->
   <main class="app-main">
-    
+
     <!-- LEFT PANEL: Generator Controls -->
     <aside class="panel-controls">
       <div class="panel-card">
         <div class="card-header">
           <div class="card-title">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
             <h2>Certificate Details</h2>
           </div>
           <span class="badge-gold">WebGit 2026</span>
         </div>
 
         <form id="certForm" class="cert-form" onsubmit="event.preventDefault();">
-          
+
           <!-- Certificate Category / Type Selector -->
           <div class="form-group">
             <label>Certificate Category <span class="req">*</span></label>
             <div class="cert-type-toggle" id="certTypeToggle">
               <button type="button" class="btn-type-toggle active" data-type="winning" id="btnTypeWinning">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H7.5"></path><path d="M14 14.66V17c0 .55.45 1 1 1h1.5"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                  <path d="M4 22h16"></path>
+                  <path d="M10 14.66V17c0 .55-.45 1-1 1H7.5"></path>
+                  <path d="M14 14.66V17c0 .55.45 1 1 1h1.5"></path>
+                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                </svg>
                 Winner Certificate
               </button>
               <button type="button" class="btn-type-toggle" data-type="participation" id="btnTypeParticipation">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <polyline points="16 11 18 13 22 9"></polyline>
+                </svg>
                 Participant Certificate
               </button>
             </div>
@@ -84,7 +109,8 @@
             <div class="form-group col-name">
               <label for="nameInput">Participant Name <span class="req">*</span></label>
               <div class="input-wrapper">
-                <input type="text" id="nameInput" placeholder="e.g. LAKSHMANAN G" value="LAKSHMANAN G" autocomplete="off" required>
+                <input type="text" id="nameInput" placeholder="e.g. LAKSHMANAN G" value="LAKSHMANAN G"
+                  autocomplete="off" required>
                 <button type="button" id="btnClearName" class="btn-clear" title="Clear name">&times;</button>
               </div>
             </div>
@@ -97,9 +123,10 @@
               <span class="help-text">Added to participant mention</span>
             </label>
             <div class="input-wrapper">
-              <input type="text" id="yearInput" placeholder="e.g. III YEAR or II YEAR" value="III YEAR" autocomplete="off">
+              <input type="text" id="yearInput" placeholder="e.g. III YEAR or II YEAR" value="III YEAR"
+                autocomplete="off">
             </div>
-            
+
             <!-- Quick Year Chips -->
             <div class="quick-chips year-chips">
               <span class="chips-label">Quick Pick:</span>
@@ -118,9 +145,10 @@
               <span class="help-text">Displays as "has won [PRIZE]"</span>
             </label>
             <div class="input-wrapper">
-              <input type="text" id="prizeInput" placeholder="e.g. First Prize, 1st Prize, or 1" value="First Prize" autocomplete="off">
+              <input type="text" id="prizeInput" placeholder="e.g. First Prize, 1st Prize, or 1" value="First Prize"
+                autocomplete="off">
             </div>
-            
+
             <!-- Quick Prize Chips -->
             <div class="quick-chips prize-chips">
               <span class="chips-label">Quick Pick:</span>
@@ -133,26 +161,33 @@
             </div>
           </div>
 
+
           <!-- Event Name & Date Section with Date Change Options -->
           <div class="form-row">
             <div class="form-group">
               <label for="eventInput">Event Name</label>
               <input type="text" id="eventInput" value="WebGit" placeholder="Event Name">
             </div>
-            
+
             <div class="form-group">
               <label for="dateInput">
                 Certificate Date <span class="req">*</span>
                 <span class="help-text">Change Date</span>
               </label>
               <div class="date-input-group">
-                <input type="text" id="dateInput" value="12/09/2026" placeholder="DD/MM/YYYY" autocomplete="off" required>
+                <input type="text" id="dateInput" value="12/09/2026" placeholder="DD/MM/YYYY" autocomplete="off"
+                  required>
                 <input type="date" id="datePicker" class="date-picker-native" title="Choose from calendar">
                 <button type="button" id="btnOpenCalendar" class="btn-calendar" title="Choose date from calendar">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
                 </button>
               </div>
-              
+
               <!-- Quick Date Chips -->
               <div class="quick-chips date-chips">
                 <button type="button" class="chip-date active" data-date="12/09/2026">12/09/2026 (Event)</button>
@@ -162,29 +197,225 @@
             </div>
           </div>
 
-          <!-- Text Arrangement Mode Selector -->
-          <div class="form-group">
-            <div class="label-with-action">
-              <label for="arrangeMode">Text Arrangement</label>
-              <button type="button" id="btnAutoArrangeNow" class="btn-text-action" title="Automatically optimize text layout">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
-                Auto-Arrange
+          <!-- AI Text Alignment & Layout Engine Section -->
+          <div class="panel-card ai-engine-card">
+            <div class="card-header ai-header">
+              <div class="card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
+                </svg>
+                <h2>AI Text Alignment &amp; Layout</h2>
+              </div>
+              <span class="badge-ai">AI-Powered</span>
+            </div>
+
+            <!-- Real-Time Overlap Detection Warning / Status Banner -->
+            <div id="overlapAlert" class="overlap-status-banner status-optimal" role="alert">
+              <div class="status-left">
+                <span class="status-icon" id="statusIcon">✨</span>
+                <div class="status-content">
+                  <strong id="statusTitle">Optimal Alignment</strong>
+                  <span id="statusDesc" class="status-desc">No collisions or overlapping text detected.</span>
+                </div>
+              </div>
+              <button type="button" id="btnQuickFix" class="btn-quick-fix hidden" title="Automatically resolve overlap">
+                🔧 Auto Fix
               </button>
             </div>
-            <div class="arrange-buttons" id="arrangeButtons">
-              <button type="button" class="btn-arrange" data-mode="left" title="Reference layout: Natural left-aligned flow">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="15" y2="12"></line><line x1="3" y1="18" x2="18" y2="18"></line></svg>
-                Left Flow
+
+            <!-- Primary AI Action Buttons -->
+            <div class="ai-actions-grid">
+              <button type="button" id="btnAiAlign" class="btn-ai-primary" title="Analyze certificate safe zones and align text automatically">
+                <span class="ai-sparkle">✨</span>
+                <strong>AI Text Alignment</strong>
               </button>
-              <button type="button" class="btn-arrange active" data-mode="center" title="Formal academic centered layout">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="6" y1="12" x2="18" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
-                Centered
-              </button>
-              <button type="button" class="btn-arrange" data-mode="justified" title="Balanced full-width alignment">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                Justified
+
+              <button type="button" id="btnAutoArrange" class="btn-ai-secondary" title="Auto-balance typography hierarchy and spacing">
+                <span>🤖</span>
+                <strong>Auto Arrange Text</strong>
               </button>
             </div>
+
+            <div class="ai-aux-grid">
+              <button type="button" id="btnAutoFix" class="btn-ai-tool" title="Reposition and scale text to clear all overlaps">
+                <span>🔧</span> Auto Fix Overlap
+              </button>
+              <button type="button" id="btnResetAlign" class="btn-ai-tool" title="Reset all alignments and typography to standard">
+                <span>↩</span> Reset Alignment
+              </button>
+            </div>
+
+            <!-- Alignment Mode Buttons (Left, Center, Right, Justified) -->
+            <div class="form-group" style="margin-top: 0.85rem;">
+              <label>Text Alignment Flow</label>
+              <div class="arrange-buttons" id="arrangeButtons">
+                <button type="button" class="btn-arrange" data-mode="left" title="Natural left-aligned flow">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="15" y2="12"></line>
+                    <line x1="3" y1="18" x2="18" y2="18"></line>
+                  </svg>
+                  Left
+                </button>
+                <button type="button" class="btn-arrange active" data-mode="center" title="Formal academic centered layout">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="6" y1="12" x2="18" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                  </svg>
+                  Center
+                </button>
+                <button type="button" class="btn-arrange" data-mode="right" title="Right-aligned layout">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="9" y1="12" x2="21" y2="12"></line>
+                    <line x1="6" y1="18" x2="21" y2="18"></line>
+                  </svg>
+                  Right
+                </button>
+                <button type="button" class="btn-arrange" data-mode="justified" title="Balanced full-width alignment">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                  </svg>
+                  Justify
+                </button>
+              </div>
+            </div>
+
+            <!-- Manual + AI Fine-Tuning Controls (Collapsible) -->
+            <details class="advanced-settings typography-panel" open>
+              <summary>
+                <span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                    <line x1="9" y1="20" x2="15" y2="20"></line>
+                    <line x1="12" y1="4" x2="12" y2="20"></line>
+                  </svg>
+                  Manual Typography &amp; Position Controls
+                </span>
+                <span class="chevron">&#9662;</span>
+              </summary>
+
+              <div class="advanced-body">
+                <!-- Font Family Selection -->
+                <div class="form-group">
+                  <label for="fontFamilySelect">Font Family</label>
+                  <div class="select-wrapper">
+                    <select id="fontFamilySelect">
+                      <option value='"Times New Roman", Times, Georgia, serif' selected>Times New Roman (Official Academic)</option>
+                      <option value='"Playfair Display", Georgia, serif'>Playfair Display (Luxury Editorial)</option>
+                      <option value='"Cinzel", serif'>Cinzel (Classic Roman Inscription)</option>
+                      <option value='"EB Garamond", serif'>EB Garamond (Traditional Fine Serif)</option>
+                      <option value='"Inter", sans-serif'>Inter (Clean Modern Sans)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Font Styling Buttons (Bold / Italic) -->
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Emphasis Style</label>
+                    <div class="style-toggle-group">
+                      <button type="button" id="btnToggleBold" class="btn-style-toggle active" title="Toggle bold headings">
+                        <strong>B</strong> Bold
+                      </button>
+                      <button type="button" id="btnToggleItalic" class="btn-style-toggle active" title="Toggle event italics">
+                        <em>I</em> Italic
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Base Font Size Slider -->
+                  <div class="form-group">
+                    <div class="label-with-badge">
+                      <label for="sliderFontSize">Font Size</label>
+                      <span id="badgeFontSize" class="val-badge">27 px</span>
+                    </div>
+                    <input type="range" id="sliderFontSize" min="18" max="38" step="1" value="27">
+                  </div>
+                </div>
+
+                <!-- Line Spacing & Letter Spacing -->
+                <div class="form-row">
+                  <div class="form-group">
+                    <div class="label-with-badge">
+                      <label for="sliderLineSpacing">Line Spacing</label>
+                      <span id="badgeLineSpacing" class="val-badge">44 px</span>
+                    </div>
+                    <input type="range" id="sliderLineSpacing" min="30" max="64" step="1" value="44">
+                  </div>
+
+                  <div class="form-group">
+                    <div class="label-with-badge">
+                      <label for="sliderLetterSpacing">Letter Spacing</label>
+                      <span id="badgeLetterSpacing" class="val-badge">0 px</span>
+                    </div>
+                    <input type="range" id="sliderLetterSpacing" min="-1" max="6" step="0.5" value="0">
+                  </div>
+                </div>
+
+                <!-- X & Y Fine Position Offsets -->
+                <div class="form-row">
+                  <div class="form-group">
+                    <div class="label-with-badge">
+                      <label for="sliderOffsetX">Position X Offset</label>
+                      <span id="badgeOffsetX" class="val-badge">0 px</span>
+                    </div>
+                    <input type="range" id="sliderOffsetX" min="-60" max="60" step="1" value="0">
+                  </div>
+
+                  <div class="form-group">
+                    <div class="label-with-badge">
+                      <label for="sliderOffsetY">Position Y Offset</label>
+                      <span id="badgeOffsetY" class="val-badge">0 px</span>
+                    </div>
+                    <input type="range" id="sliderOffsetY" min="-50" max="50" step="1" value="0">
+                  </div>
+                </div>
+
+                <!-- Visual Debug / Bounds Toggle -->
+                <div class="checkbox-row" style="margin-top: 0.25rem;">
+                  <input type="checkbox" id="chkShowBounds">
+                  <label for="chkShowBounds">Show layout safe zones &amp; collision boundaries</label>
+                </div>
+
+              </div>
+            </details>
+
+            <!-- Custom Certificate Template Upload Area -->
+            <details class="advanced-settings template-upload-panel">
+              <summary>
+                <span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  Custom Template Upload
+                </span>
+                <span class="chevron">&#9662;</span>
+              </summary>
+              <div class="advanced-body">
+                <p class="upload-hint">Upload your own certificate template image. AI will analyze the dimensions and layout automatically.</p>
+                <div class="upload-dropzone" id="templateDropzone">
+                  <input type="file" id="inputTemplateUpload" accept="image/png,image/jpeg,image/webp" style="display:none;">
+                  <button type="button" id="btnBrowseTemplate" class="btn-secondary" style="width:100%; justify-content:center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                      <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                    Choose Custom Certificate Template
+                  </button>
+                  <button type="button" id="btnRestoreOfficialTemplate" class="btn-text-action" style="margin-top: 0.5rem; display:none;">
+                    ↩ Restore Official APEC Certificate
+                  </button>
+                </div>
+              </div>
+            </details>
+
           </div>
 
           <!-- Department & Location -->
@@ -203,7 +434,12 @@
           <details class="advanced-settings">
             <summary>
               <span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                  </path>
+                </svg>
                 Advanced Settings
               </span>
               <span class="chevron">&#9662;</span>
@@ -231,30 +467,48 @@
           <!-- Primary Actions -->
           <div class="action-buttons">
             <button type="button" id="btnGenerate" class="btn-primary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                </path>
+              </svg>
               Generate Certificate
             </button>
 
             <div class="btn-group-downloads">
               <button type="button" id="btnDownloadPng" class="btn-action btn-png">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
                 Download PNG
               </button>
 
               <button type="button" id="btnDownloadPdf" class="btn-action btn-pdf">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M10 12a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1z"></path></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <path d="M10 12a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1z"></path>
+                </svg>
                 Download PDF
               </button>
             </div>
 
             <div class="btn-group-aux">
               <button type="button" id="btnPrint" class="btn-aux">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                  <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
                 Print Certificate
               </button>
 
               <button type="button" id="btnReset" class="btn-aux btn-danger">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <path d="M3 3v5h5"></path>
+                </svg>
                 Reset
               </button>
             </div>
@@ -267,7 +521,8 @@
       <div class="panel-card presets-card">
         <h3>Sample Participants</h3>
         <div class="preset-list">
-          <button class="preset-item" data-type="winning" data-title="MR" data-name="LAKSHMANAN G" data-year="III YEAR" data-prize="First Prize">
+          <button class="preset-item" data-type="winning" data-title="MR" data-name="LAKSHMANAN G" data-year="III YEAR"
+            data-prize="First Prize">
             <span class="preset-badge rank-1">1</span>
             <div class="preset-info">
               <strong>MR LAKSHMANAN G</strong>
@@ -275,7 +530,8 @@
             </div>
           </button>
 
-          <button class="preset-item" data-type="winning" data-title="MRS" data-name="PRIYA S" data-year="II YEAR" data-prize="Second Prize">
+          <button class="preset-item" data-type="winning" data-title="MRS" data-name="PRIYA S" data-year="II YEAR"
+            data-prize="Second Prize">
             <span class="preset-badge rank-2">2</span>
             <div class="preset-info">
               <strong>MRS PRIYA S</strong>
@@ -283,7 +539,8 @@
             </div>
           </button>
 
-          <button class="preset-item" data-type="participation" data-title="MR" data-name="ARUN KUMAR" data-year="IV YEAR" data-prize="">
+          <button class="preset-item" data-type="participation" data-title="MR" data-name="ARUN KUMAR"
+            data-year="IV YEAR" data-prize="">
             <span class="preset-badge rank-part">P</span>
             <div class="preset-info">
               <strong>MR ARUN KUMAR</strong>
@@ -291,7 +548,8 @@
             </div>
           </button>
 
-          <button class="preset-item" data-type="participation" data-title="MS" data-name="SNEHA R" data-year="I YEAR" data-prize="">
+          <button class="preset-item" data-type="participation" data-title="MS" data-name="SNEHA R" data-year="I YEAR"
+            data-prize="">
             <span class="preset-badge rank-part">P</span>
             <div class="preset-info">
               <strong>MS SNEHA R</strong>
@@ -304,7 +562,7 @@
 
     <!-- RIGHT PANEL: Live Certificate Preview -->
     <section class="panel-preview">
-      
+
       <!-- Preview Controls Header -->
       <div class="preview-toolbar">
         <div class="toolbar-title">
@@ -319,7 +577,10 @@
             <button id="btnZoomFit" class="btn-tool" title="Fit to screen">Fit</button>
           </div>
           <button id="btnFullscreen" class="btn-tool" title="Toggle Fullscreen">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+              </path>
+            </svg>
           </button>
         </div>
       </div>
@@ -354,7 +615,8 @@
   <!-- Toast Notification Container -->
   <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
-  <script src="assets/certificate_base_data.js"></script>
-  <script src="script.js"></script>
+  <script src="assets/certificate_base_data.js?v=10"></script>
+  <script src="script.js?v=10"></script>
 </body>
+
 </html>

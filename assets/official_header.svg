@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 165" width="1024" height="165">
+  <defs>
+    <style>
+      .hdr-om {
+        font-family: "Times New Roman", Times, "Playfair Display", Georgia, serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        fill: #C00000;
+        text-anchor: middle;
+      }
+      .hdr-college {
+        font-family: "Times New Roman", Times, "Playfair Display", Georgia, serif;
+        font-size: 17px;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        fill: #C00000;
+        text-anchor: middle;
+      }
+      .hdr-mel {
+        font-family: "Times New Roman", Times, "Playfair Display", Georgia, serif;
+        font-size: 15.5px;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        fill: #C00000;
+        text-anchor: middle;
+      }
+      .hdr-auto {
+        font-family: "Times New Roman", Times, "Playfair Display", Georgia, serif;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        fill: #C00000;
+        text-anchor: middle;
+      }
+      .hdr-affil {
+        font-family: "Times New Roman", Times, "Playfair Display", Georgia, serif;
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.15px;
+        fill: #C00000;
+        text-anchor: middle;
+      }
+      .hdr-addr {
+        font-family: "Times New Roman", Times, "Playfair Display", Georgia, serif;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.25px;
+        fill: #C00000;
+        text-anchor: middle;
+      }
+      .hdr-web {
+        font-family: "Times New Roman", Times, "Playfair Display", Georgia, serif;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        fill: #C00000;
+        text-anchor: middle;
+        text-decoration: underline;
+      }
+    </style>
+  </defs>
+
+  <!-- Line 1: OM SAKTHI -->
+  <text x="512" y="28" class="hdr-om">OM SAKTHI</text>
+
+  <!-- Line 2: College Name -->
+  <text x="512" y="46" class="hdr-college">ADHIPARASAKTHI ENGINEERING COLLEGE</text>
+
+  <!-- Line 3: Melmaruvathur -->
+  <text x="512" y="64" class="hdr-mel">MELMARUVATHUR</text>
+
+  <!-- Line 4: Autonomous Institution -->
+  <text x="512" y="79" class="hdr-auto">(An Autonomous Institution)</text>
+
+  <!-- Line 5: AICTE & Anna University -->
+  <text x="512" y="93" class="hdr-affil">Approved by AICTE, New Delhi and Affiliated to Anna University, Chennai</text>
+
+  <!-- Line 6: NAAC & ISO -->
+  <text x="512" y="107" class="hdr-affil">Accredited by NAAC with ‘A’ Grade, An ISO 9001:2015 Certified Institution</text>
+
+  <!-- Line 7: UGC Recognised -->
+  <text x="512" y="121" class="hdr-affil">Recognised by UGC under section 2(f) and 12(B)</text>
+
+  <!-- Line 8: Address -->
+  <text x="512" y="135" class="hdr-addr">MELMARUVATHUR – 603 319, CHENGALPATTU DISTRICT, TAMIL NADU, INDIA</text>
+
+  <!-- Line 9: Website -->
+  <text x="512" y="151" class="hdr-web">www.apec.edu.in</text>
+</svg>
